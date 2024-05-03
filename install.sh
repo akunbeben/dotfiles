@@ -3,19 +3,21 @@ curl -L https://nixos.org/nix/install | sh
 . ~/.nix-profile/etc/profile.d/nix.sh
 
 nix-env -iA \
+	nixpkgs.zsh \
 	nixpkgs.antibody \
 	nixpkgs.tmux \
 	nixpkgs.bat \
 	nixpkgs.stow \
 	nixpkgs.bun \
 	nixpkgs.php82 \
-	nixpkgs.vscode \
 	nixpkgs.php82Packages.composer
 
 stow zsh
 stow scripts
 
 command -v zsh | sudo tee -a /etc/shells
+
+sudo cp -f $(pwd)/chsh /etc/pam.d/chsh
 
 sudo chsh -s $(which zsh) $(whoami)
 
