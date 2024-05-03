@@ -15,6 +15,8 @@ source ~/.zsh_plugins.sh
 alias personal=~/personal.sh
 alias work=~/work.sh
 
+source ~/.dotfiles/aliases.sh
+
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

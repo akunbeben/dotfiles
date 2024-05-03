@@ -1,4 +1,5 @@
-# Install Nix
+#!/bin/bash
+
 curl -L https://nixos.org/nix/install | sh
 . ~/.nix-profile/etc/profile.d/nix.sh
 
@@ -17,7 +18,7 @@ stow scripts
 
 command -v zsh | sudo tee -a /etc/shells
 
-sudo cp -f $(pwd)/chsh /etc/pam.d/chsh
+sudo /bin/cp -f ./chsh /etc/pam.d/chsh
 
 sudo chsh -s $(which zsh) $(whoami)
 
