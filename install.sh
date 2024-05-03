@@ -12,6 +12,9 @@ nix-env -iA \
 	nixpkgs.vscode \
 	nixpkgs.php82Packages.composer
 
+stow zsh
+stow scripts
+
 command -v zsh | sudo tee -a /etc/shells
 
 sudo chsh -s $(which zsh) $(whoami)
