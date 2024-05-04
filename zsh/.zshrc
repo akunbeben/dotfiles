@@ -16,6 +16,7 @@ alias personal=~/personal.sh
 alias work=~/work.sh
 
 # source ~/.dotfiles/aliases.zsh
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
 
