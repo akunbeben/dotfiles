@@ -5,7 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Created by newuser for 5.9
+# History file configuration
+[ -z "$HISTFILE" ] && HISTFILE="$ZDOTDIR/.zsh_history"
+[ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
+[ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
 
 export NVM_DIR=${HOME}/.nvm
 export NVM_COMPLETION=true
@@ -15,8 +18,9 @@ source ~/.zsh_plugins.sh
 alias personal=~/personal.sh
 alias work=~/work.sh
 
-# source ~/.dotfiles/aliases.zsh
+source "$HOME/.dotfiles/aliases.zsh"
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
 

@@ -35,3 +35,5 @@ ssh-add "$HOME/.ssh/gitlab_personal"
 ssh-keygen -t ed25519 -C "benny.rahmat@thrive.co.id" -f "$HOME/.ssh/gitlab_work" <<< ""
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/gitlab_work"
+
+composer global require cpriego/valet-linux
