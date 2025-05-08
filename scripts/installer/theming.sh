@@ -19,7 +19,7 @@ run_command "tar -xvf /home/$SUDO_USER/dotfiles/assets/icons/Tela-circle-dracula
 
 run_command "yay -S --sudoloop --noconfirm kvantum-theme-catppuccin-git" "Install Catppuccin theme for Kvantum" "yes" "no"
 
-run_command "cp -r /home/$SUDO_USER/dotfiles/configs/kitty /home/$SUDO_USER/.config/" "Copy Catppuccin theme configuration for Kitty terminal" "yes" "no"
+run_command "cp -r /home/$SUDO_USER/dotfiles/.wezterm /home/$SUDO_USER/.wezterm" "Copy WezTerm config" "yes" "no"
 
 # Add instructions to configure theming
 print_info "\nPost-installation instructions:"
