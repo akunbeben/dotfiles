@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the directory of the current script
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Source helper file
 source $SCRIPT_DIR/helper.sh
@@ -33,4 +33,11 @@ run_command "yay -S --sudoloop --noconfirm grimblast" "Install Grimblast - Scree
 run_command "yay -S --sudoloop --noconfirm hypridle" "Install Hypridle for idle management (Must)" "yes" "no"
 run_command "cp -r /home/$SUDO_USER/simple-hyprland/configs/hypr/hypridle.conf /home/$SUDO_USER/.config/hypr/" "Copy Hypridle config" "yes" "no"
 
+run_command "pacman -S --noconfirm --needed bluez bluez-utils blueman" "Install Bluetooth packages (bluez, bluez-utils, blueman)" "yes"
+
+run_command "systemctl enable --now bluetooth.service" "Enable and start Bluetooth service" "yes"
+
+run_command "usermod -aG lp $USER" "Add current user to 'lp' group for Bluetooth permissions" "yes"
+
 echo "------------------------------------------------------------------------"
+

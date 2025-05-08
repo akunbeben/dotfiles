@@ -32,4 +32,3 @@ run_command "pacman -S --noconfirm neovim" "Install Neovim (Recommended)" "yes"
 run_command "pacman -S --noconfirm tar" "Install tar for extracting files (Must)/needed for copying themes" "yes"
 
 echo "------------------------------------------------------------------------"
-
