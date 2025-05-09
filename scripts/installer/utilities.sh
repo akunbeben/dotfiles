@@ -35,9 +35,10 @@ run_command "cp -r /home/$SUDO_USER/dotfiles/configs/hypr/hypridle.conf /home/$S
 
 run_command "pacman -S --noconfirm --needed bluez bluez-utils blueman" "Install Bluetooth packages (bluez, bluez-utils, blueman)" "yes"
 
+run_command "pacman -S --noconfirm thunar" "Install Thunar file manager" "yes"
+
 run_command "systemctl enable --now bluetooth.service" "Enable and start Bluetooth service" "yes"
 
 run_command "usermod -aG lp $USER" "Add current user to 'lp' group for Bluetooth permissions" "yes"
 
 echo "------------------------------------------------------------------------"
-
