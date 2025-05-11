@@ -37,7 +37,10 @@ run_command "pacman -S --noconfirm --needed bluez bluez-utils blueman" "Install 
 
 run_command "systemctl enable --now bluetooth.service" "Enable and start Bluetooth service" "yes"
 
+run_command "cp -r /home/$SUDO_USER/dotfiles/.wezterm.lua /home/$SUDO_USER/.wezterm.lua" "Copy WezTerm config" "yes" "no"
+
+run_command "cp -r /home/$SUDO_USER/dotfiles/configs/fish /home/$SUDO_USER/.config/" "Copy Fish shell" "yes" "no"
+
 run_command "usermod -aG lp $USER" "Add current user to 'lp' group for Bluetooth permissions" "yes"
 
 echo "------------------------------------------------------------------------"
-
