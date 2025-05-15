@@ -14,6 +14,33 @@ alias vim="nvim $argv"
 alias vimconf="vim ~/.config/nvim"
 alias install="sudo pacman -S $argv"
 
+# Git aliases
+abbr g git
+abbr ga 'git add'
+abbr gaa 'git add .'
+abbr gb 'git branch'
+abbr gc 'git commit -v'
+abbr gcm 'git commit -m'
+abbr gco 'git checkout'
+abbr gcb 'git checkout -b'
+abbr gd 'git diff'
+abbr gl 'git pull'
+abbr glog 'git log --oneline --graph --decorate'
+abbr gp 'git push'
+abbr gpf 'git push --force'
+abbr gst 'git status'
+abbr gr 'git remote -v'
+abbr grm 'git rm'
+abbr gcl 'git clone'
+abbr gpl 'git pull origin'
+abbr gps 'git push origin'
+abbr gsw 'git switch'
+abbr gss 'git stash save'
+abbr gsp 'git stash pop'
+abbr gsta 'git stash'
+abbr gstl 'git stash list'
+abbr gsts 'git stash show -p'
+
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
 
 # bun
