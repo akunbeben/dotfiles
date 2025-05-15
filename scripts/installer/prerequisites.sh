@@ -28,7 +28,7 @@ run_command "pacman -S --noconfirm wezterm" "Install WezTerm (Recommended)" "yes
 run_command "pacman -S --noconfirm nano" "Install nano" "yes"
 
 run_command "pacman -S --noconfirm neovim" "Install Neovim (Recommended)" "yes"
-run_command "cp -r /home/$SUDO_USER/dotfiles/configs/nvim /home/$SUDO_USER/.config/" "Copy Neovim config" "yes" "no"
+run_command "[[ -L /home/$SUDO_USER/.config/nvim || ! -e /home/$SUDO_USER/.config/nvim ]] && ln -sf /home/$SUDO_USER/dotfiles/configs/nvim /home/$SUDO_USER/.config/nvim" "Symlink Neovim config (if not already exists or is a symlink)" "yes" "no"
 
 run_command "pacman -S --noconfirm tar" "Install tar for extracting files (Must)/needed for copying themes" "yes"
 
