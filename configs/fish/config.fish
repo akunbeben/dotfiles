@@ -40,6 +40,20 @@ abbr gsta 'git stash'
 abbr gstl 'git stash list'
 abbr gsts 'git stash show -p'
 
+abbr cdd 'cd -'
+abbr home 'cd ~'
+abbr root 'cd /'
+abbr docs 'cd ~/Documents'
+abbr dl 'cd ~/Downloads'
+abbr desk 'cd ~/Desktop'
+abbr proj 'cd ~/projects'
+abbr src 'cd ~/src'
+abbr ..1 'cd ..'
+abbr ..2 'cd ../..'
+abbr ..3 'cd ../../..'
+abbr ..4 'cd ../../../..'
+abbr ..5 'cd ../../../../..'
+
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
 
 # bun
