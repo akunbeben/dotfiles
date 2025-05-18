@@ -54,6 +54,8 @@ abbr ..3 'cd ../../..'
 abbr ..4 'cd ../../../..'
 abbr ..5 'cd ../../../../..'
 
+abbr shadcn 'bunx --bun shadcn@latest add '
+
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
 
 # bun
