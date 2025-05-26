@@ -54,9 +54,15 @@ abbr ..3 'cd ../../..'
 abbr ..4 'cd ../../../..'
 abbr ..5 'cd ../../../../..'
 
-abbr shadcn 'bunx --bun shadcn@latest add '
+abbr shadcn 'bunx --bun shadcn@latest add'
 
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
+
+set -x PHPENV_ROOT "/home/ben/.phpenv"
+if test -d "/home/ben/.phpenv"
+    set -x PATH "/home/ben/.phpenv/bin" $PATH
+    status --is-interactive; and . (phpenv init -|psub)
+end
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
