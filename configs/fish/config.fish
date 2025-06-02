@@ -1,18 +1,16 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
-
-# overwrite greeting
-# potentially disabling fastfetch
-#function fish_greeting
-#    # smth smth
-#end
+function fish_greeting
+    fastfetch
+end
+funcsave fish_greeting
 
 alias q="exit"
 alias c="clear"
 alias l="ls -lah"
-alias a="php artisan $argv"
 alias vim="nvim $argv"
 alias vimconf="vim ~/.config/nvim"
 alias install="sudo pacman -S $argv"
+
+abbr a php artisan
 
 # Git aliases
 abbr g git
@@ -57,13 +55,11 @@ abbr ..5 'cd ../../../../..'
 abbr shadcn 'bunx --bun shadcn@latest add'
 
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
+set -gx PATH $HOME/.config/fvm/bin $PATH
+set -gx PATH $HOME/Projects/scripting $PATH
 
-set -x PHPENV_ROOT "/home/ben/.phpenv"
-if test -d "/home/ben/.phpenv"
-    set -x PATH "/home/ben/.phpenv/bin" $PATH
-    status --is-interactive; and . (phpenv init -|psub)
-end
+set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
+set -U fish_user_paths /usr/local/go/bin $fish_user_paths
 
-# bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
