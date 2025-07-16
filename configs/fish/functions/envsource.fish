@@ -10,7 +10,6 @@ function envsource
                 set item (string split -m 1 '=' $line)
                 set item[2] (eval echo $item[2]) # expand any variables in the value
                 set -gx $item[1] $item[2]
-                echo "Exported key: $item[1]" # could say with $item[2] but that might be a secret
             else
                 eval $line # allow for simple commands to be run e.g. cd dir/mamba activate env
             end
