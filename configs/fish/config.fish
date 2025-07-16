@@ -71,9 +71,6 @@ set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
 set -U fish_user_paths /usr/local/go/bin $fish_user_paths
 set -U fish_user_paths /home/ben/go/bin $fish_user_paths
 
-set -gx GEMINI_API_KEY AIzaSyCv9DvQD8uXx-UMMO_a6pNaBV6iRpqRnvI
-set -gx EDITOR nvim
-
 set -x SDKMAN_DIR $HOME/.sdkman
 source $SDKMAN_DIR/bin/sdkman-init.fish
 
@@ -81,3 +78,5 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 set fish_greeting
+
+envsource "$HOME/.env"
