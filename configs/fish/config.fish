@@ -1,18 +1,27 @@
-function fish_greeting
-    fastfetch
-end
-funcsave fish_greeting
-
 alias q="exit"
 alias c="clear"
-alias l="ls -lah"
+alias l="eza --long --icons"
 alias vim="nvim $argv"
 alias vimconf="vim ~/.config/nvim"
-alias install="sudo pacman -S $argv"
+alias install="sudo apt install $argv"
+alias uninstall="sudo apt remove --purge $argv && sudo apt autoremove --purge -y"
+alias ls="eza --long --icons --group-directories-first $argv"
+alias ll="eza --long --icons --group-directories-first --all $argv"
 
 abbr a php artisan
+abbr va valet php artisan
+abbr migrate php artisan migrate
+abbr rollback php artisan migrate:rollback
+abbr model php artisan make:model
+abbr controller php artisan make:controller
+abbr request php artisan make:request
+abbr event php artisan make:event
+abbr listener php artisan make:listener
+abbr job php artisan make:job
+abbr seeder php artisan make:seeder
 
 # Git aliases
+abbr rf 'exec fish'
 abbr g git
 abbr ga 'git add'
 abbr gaa 'git add .'
@@ -60,6 +69,15 @@ set -gx PATH $HOME/Projects/scripting $PATH
 
 set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
 set -U fish_user_paths /usr/local/go/bin $fish_user_paths
+set -U fish_user_paths /home/ben/go/bin $fish_user_paths
+
+set -gx GEMINI_API_KEY AIzaSyCv9DvQD8uXx-UMMO_a6pNaBV6iRpqRnvI
+set -gx EDITOR nvim
+
+set -x SDKMAN_DIR $HOME/.sdkman
+source $SDKMAN_DIR/bin/sdkman-init.fish
 
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+set fish_greeting

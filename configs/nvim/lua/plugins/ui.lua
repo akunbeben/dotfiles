@@ -56,18 +56,48 @@ return {
         },
     },
     {
-        "projekt0n/github-nvim-theme",
-        name = "github-theme",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        lazy = false,
         config = function()
-            require("github-theme").setup({
-                options = {
-                    transparent = true,
+            local flavour = "mocha" -- fallback default
+            local path = vim.fn.stdpath("config") .. "/theme-flavour"
+
+            -- Baca atau buat file flavour
+            local file = io.open(path, "r")
+            if file then
+                flavour = file:read("*l") or flavour
+                file:close()
+            else
+                -- File tidak ada, buat dengan default flavour
+                local new_file = io.open(path, "w")
+                if new_file then
+                    new_file:write(flavour)
+                    new_file:close()
+                end
+            end
+
+            require("catppuccin").setup({
+                flavour = flavour,
+                transparent_background = true,
+                integrations = {
+                    lualine = false,
+                    cmp = true,
+                    gitsigns = true,
+                    mason = true,
+                    noice = true,
+                    notify = true,
+                    nvimtree = true,
+                    treesitter = true,
+                    telescope = {
+                        enabled = true,
+                    },
+                    which_key = true,
                 },
             })
 
-            vim.cmd.colorscheme(vim.g.github_theme_variant)
+            vim.cmd.colorscheme("catppuccin")
         end,
     },
     {
