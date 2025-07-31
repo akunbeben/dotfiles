@@ -31,7 +31,7 @@ return {
                             size = {
                                 width = 60,
                                 height = "auto",
-                                max_height = 15,
+                                max_height = 60,
                             },
                             border = {
                                 style = "rounded",
@@ -117,7 +117,7 @@ return {
                     globalstatus = vim.o.laststatus == 3,
                     disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
                     component_separators = "",
-                    section_separators = { left = "", right = "" },
+                    section_separators = { left = "", right = "" },
                 },
                 sections = {
                     lualine_a = { "mode" },
