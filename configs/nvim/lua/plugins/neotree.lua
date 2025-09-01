@@ -3,17 +3,21 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         config = function()
             require("neo-tree").setup({
+                filesystem = {
+                    follow_current_file = {
+                        enabled = true,
+                        leave_dirs_open = true,
+                    },
+                    filtered_items = {
+                        always_show_by_pattern = {
+                            ".env*",
+                        },
+                    },
+                },
                 default_component_configs = {
                     modified = {
                         symbol = " ",
                         highlight = "NeoTreeModified",
-                    },
-                    icon = {
-                        default = "",
-                        folder_closed = "",
-                        folder_open = "",
-                        folder_empty = "",
-                        folder_empty_open = "",
                     },
                     git_status = {
                         symbols = {
@@ -29,31 +33,12 @@ return {
                         },
                     },
                 },
-                filesystem = {
-                    follow_current_file = { enabled = true },
-                    hijack_netrw = true,
-                    use_libuv_file_watcher = true,
-                },
                 window = {
-                    position = "float",
+                    position = "right",
                     mappings = {
                         ["l"] = "open",
                         ["h"] = "close_node",
                         ["<space>"] = "none",
-                        ["Y"] = {
-                            function(state)
-                                local node = state.tree:get_node()
-                                local path = node:get_id()
-                                vim.fn.setreg("+", path, "c")
-                            end,
-                            desc = "Copy Path to Clipboard",
-                        },
-                        ["O"] = {
-                            function(state)
-                                require("lazy.util").open(state.tree:get_node().path, { system = true })
-                            end,
-                            desc = "Open with System Application",
-                        },
                         ["P"] = { "toggle_preview", config = { use_float = false } },
                         ["<BS>"] = function(state)
                             local cwd = vim.fn.getcwd()

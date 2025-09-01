@@ -1,11 +1,5 @@
 return {
     {
-        "rcarriga/nvim-notify",
-        opts = {
-            top_down = false,
-        },
-    },
-    {
         "folke/noice.nvim",
         opts = function(_, opts)
             opts.presets = {
@@ -56,12 +50,48 @@ return {
         },
     },
     {
+        "akinsho/bufferline.nvim",
+        init = function()
+            local bufline = require("catppuccin.groups.integrations.bufferline")
+            bufline.get = bufline.get_theme
+        end,
+        event = "VeryLazy",
+        opts = {
+            options = {
+                offsets = {
+                    {
+                        filetype = "neo-tree",
+                        text = "",
+                        highlight = "Directory",
+                        text_align = "left",
+                    },
+                    {
+                        filetype = "snacks_layout_box",
+                    },
+                },
+            },
+        },
+        config = function(_, opts)
+            vim.cmd.colorscheme("catppuccin-mocha")
+
+            require("bufferline").setup(opts)
+            -- Fix bufferline when restoring a session
+            vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+                callback = function()
+                    vim.schedule(function()
+                        pcall(nvim_bufferline)
+                    end)
+                end,
+            })
+        end,
+    },
+    {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
         lazy = false,
         config = function()
-            local flavour = "mocha" -- fallback default
+            local flavour = "auto" -- fallback default
             local path = vim.fn.stdpath("config") .. "/theme-flavour"
 
             -- Baca atau buat file flavour
@@ -79,6 +109,10 @@ return {
             end
 
             require("catppuccin").setup({
+                float = {
+                    transparent = true,
+                    solid = false,
+                },
                 flavour = flavour,
                 transparent_background = true,
                 integrations = {
@@ -96,8 +130,6 @@ return {
                     which_key = true,
                 },
             })
-
-            vim.cmd.colorscheme("catppuccin")
         end,
     },
     {
@@ -161,7 +193,7 @@ return {
                     },
                     lualine_z = {
                         function()
-                            return " " .. os.date("%R")
+                            return "  " .. os.date("%R")
                         end,
                     },
                 },

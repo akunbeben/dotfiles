@@ -1,6 +1,6 @@
 alias q="exit"
 alias c="clear"
-alias l="eza --long --icons"
+alias l="eza --long --icons --group-directories-first"
 alias vim="nvim $argv"
 alias vimconf="vim ~/.config/nvim"
 alias install="sudo apt install $argv"
@@ -20,6 +20,7 @@ abbr event php artisan make:event
 abbr listener php artisan make:listener
 abbr job php artisan make:job
 abbr seeder php artisan make:seeder
+abbr tinker php artisan tinker
 
 # Git aliases
 abbr rf 'exec fish'
@@ -67,6 +68,7 @@ abbr shadcn 'bunx --bun shadcn@latest add'
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
 set -gx PATH $HOME/.config/fvm/bin $PATH
 set -gx PATH $HOME/Projects/scripting $PATH
+set -gx PATH $HOME/Android/android-studio/bin $PATH
 
 set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
 set -U fish_user_paths /usr/local/go/bin $fish_user_paths
@@ -81,3 +83,5 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set fish_greeting
 
 envsource "$HOME/.env"
+
+[ -s "/home/ben/.jabba/jabba.fish" ]; and source "/home/ben/.jabba/jabba.fish"
