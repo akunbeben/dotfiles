@@ -28,7 +28,7 @@ config.default_cwd = "/home/ben/Projects"
 config.font = set_font(wezterm.gui.get_appearance())
 config.font_size = 12
 config.front_end = "WebGpu"
-config.line_height = 1.35
+-- config.line_height = 1.25
 
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 -- config.window_background_opacity = 0.96

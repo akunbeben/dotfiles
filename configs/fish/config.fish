@@ -8,6 +8,7 @@ alias uninstall="sudo apt remove --purge $argv && sudo apt autoremove --purge -y
 alias ls="eza --long --icons --group-directories-first $argv"
 alias ll="eza --long --icons --group-directories-first --all $argv"
 alias ai="claude"
+alias npm="pnpm"
 
 abbr a php artisan
 abbr va valet php artisan
@@ -23,6 +24,7 @@ abbr seeder php artisan make:seeder
 abbr tinker php artisan tinker
 
 # Git aliases
+abbr lg lazygit
 abbr rf 'exec fish'
 abbr g git
 abbr ga 'git add'
@@ -74,6 +76,15 @@ set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
 set -U fish_user_paths /usr/local/go/bin $fish_user_paths
 set -U fish_user_paths /home/ben/go/bin $fish_user_paths
 
+set -x PHPENV_ROOT ~/.local/bin/phpenv
+if test -d $PHPENV_ROOT
+    set -x PATH $PHPENV_ROOT/shims $PHPENV_ROOT/bin $PATH
+    eval (phpenv init - | string collect)
+end
+
+set -Ux PATH $HOME/.local/bin/phpenv/shims $PATH
+set -Ux PATH $HOME/.local/bin/phpenv/bin $PATH
+
 set -x SDKMAN_DIR $HOME/.sdkman
 source $SDKMAN_DIR/bin/sdkman-init.fish
 
@@ -85,3 +96,10 @@ set fish_greeting
 envsource "$HOME/.env"
 
 [ -s "/home/ben/.jabba/jabba.fish" ]; and source "/home/ben/.jabba/jabba.fish"
+
+# pnpm
+set -gx PNPM_HOME "/home/ben/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

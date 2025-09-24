@@ -12,6 +12,7 @@ return {
                         always_show_by_pattern = {
                             ".env*",
                         },
+                        show_hidden_count = false,
                     },
                 },
                 default_component_configs = {

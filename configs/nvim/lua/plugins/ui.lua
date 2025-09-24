@@ -50,87 +50,66 @@ return {
         },
     },
     {
-        "akinsho/bufferline.nvim",
-        init = function()
-            local bufline = require("catppuccin.groups.integrations.bufferline")
-            bufline.get = bufline.get_theme
-        end,
-        event = "VeryLazy",
+        "catppuccin/nvim",
+        lazy = true,
+        name = "catppuccin",
         opts = {
-            options = {
-                offsets = {
-                    {
-                        filetype = "neo-tree",
-                        text = "",
-                        highlight = "Directory",
-                        text_align = "left",
-                    },
-                    {
-                        filetype = "snacks_layout_box",
+            integrations = {
+                aerial = true,
+                alpha = true,
+                cmp = true,
+                dashboard = true,
+                flash = true,
+                fzf = true,
+                grug_far = true,
+                gitsigns = true,
+                headlines = true,
+                illuminate = true,
+                indent_blankline = { enabled = true },
+                leap = true,
+                lsp_trouble = true,
+                mason = true,
+                markdown = true,
+                mini = true,
+                native_lsp = {
+                    enabled = true,
+                    underlines = {
+                        errors = { "undercurl" },
+                        hints = { "undercurl" },
+                        warnings = { "undercurl" },
+                        information = { "undercurl" },
                     },
                 },
+                navic = { enabled = true, custom_bg = "lualine" },
+                neotest = true,
+                neotree = true,
+                noice = true,
+                notify = true,
+                semantic_tokens = true,
+                snacks = true,
+                telescope = true,
+                treesitter = true,
+                treesitter_context = true,
+                which_key = true,
             },
         },
-        config = function(_, opts)
-            vim.cmd.colorscheme("catppuccin-mocha")
-
-            require("bufferline").setup(opts)
-            -- Fix bufferline when restoring a session
-            vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-                callback = function()
-                    vim.schedule(function()
-                        pcall(nvim_bufferline)
-                    end)
+        specs = {
+            {
+                "akinsho/bufferline.nvim",
+                optional = true,
+                opts = function(_, opts)
+                    if (vim.g.colors_name or ""):find("catppuccin") then
+                        opts.highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
+                    end
                 end,
-            })
-        end,
+            },
+        },
     },
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        lazy = false,
-        config = function()
-            local flavour = "auto" -- fallback default
-            local path = vim.fn.stdpath("config") .. "/theme-flavour"
-
-            -- Baca atau buat file flavour
-            local file = io.open(path, "r")
-            if file then
-                flavour = file:read("*l") or flavour
-                file:close()
-            else
-                -- File tidak ada, buat dengan default flavour
-                local new_file = io.open(path, "w")
-                if new_file then
-                    new_file:write(flavour)
-                    new_file:close()
-                end
-            end
-
-            require("catppuccin").setup({
-                float = {
-                    transparent = true,
-                    solid = false,
-                },
-                flavour = flavour,
-                transparent_background = true,
-                integrations = {
-                    lualine = false,
-                    cmp = true,
-                    gitsigns = true,
-                    mason = true,
-                    noice = true,
-                    notify = true,
-                    nvimtree = true,
-                    treesitter = true,
-                    telescope = {
-                        enabled = true,
-                    },
-                    which_key = true,
-                },
-            })
-        end,
+        "LazyVim/LazyVim",
+        opts = {
+            colorscheme = "catppuccin-mocha",
+        },
     },
     {
         "nvim-lualine/lualine.nvim",
