@@ -3,6 +3,13 @@ return {
         "folke/noice.nvim",
         opts = function(_, opts)
             opts.presets = {
+                routes = {
+                    filter = {
+                        event = "notify",
+                        find = "No information available",
+                    },
+                    opts = { skip = true },
+                },
                 command_palette = {
                     views = {
                         cmdline_popup = {
@@ -54,6 +61,7 @@ return {
         lazy = true,
         name = "catppuccin",
         opts = {
+            transparent_background = true,
             integrations = {
                 aerial = true,
                 alpha = true,
@@ -91,17 +99,6 @@ return {
                 treesitter = true,
                 treesitter_context = true,
                 which_key = true,
-            },
-        },
-        specs = {
-            {
-                "akinsho/bufferline.nvim",
-                optional = true,
-                opts = function(_, opts)
-                    if (vim.g.colors_name or ""):find("catppuccin") then
-                        opts.highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
-                    end
-                end,
             },
         },
     },

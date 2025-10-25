@@ -7,8 +7,7 @@ alias install="sudo apt install $argv"
 alias uninstall="sudo apt remove --purge $argv && sudo apt autoremove --purge -y"
 alias ls="eza --long --icons --group-directories-first $argv"
 alias ll="eza --long --icons --group-directories-first --all $argv"
-alias ai="claude"
-alias npm="pnpm"
+alias ai="gemini"
 
 abbr a php artisan
 abbr va valet php artisan
