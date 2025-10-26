@@ -84,17 +84,12 @@ end
 set -Ux PATH $HOME/.local/bin/phpenv/shims $PATH
 set -Ux PATH $HOME/.local/bin/phpenv/bin $PATH
 
-set -x SDKMAN_DIR $HOME/.sdkman
-source $SDKMAN_DIR/bin/sdkman-init.fish
-
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 set fish_greeting
 
 envsource "$HOME/.env"
-
-[ -s "/home/ben/.jabba/jabba.fish" ]; and source "/home/ben/.jabba/jabba.fish"
 
 # pnpm
 set -gx PNPM_HOME "/home/ben/.local/share/pnpm"
