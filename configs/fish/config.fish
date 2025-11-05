@@ -3,11 +3,16 @@ alias c="clear"
 alias l="eza --long --icons --group-directories-first"
 alias vim="nvim $argv"
 alias vimconf="vim ~/.config/nvim"
-alias install="sudo apt install $argv"
+alias install="pacseek"
+alias i="pacseek"
 alias uninstall="sudo apt remove --purge $argv && sudo apt autoremove --purge -y"
 alias ls="eza --long --icons --group-directories-first $argv"
 alias ll="eza --long --icons --group-directories-first --all $argv"
 alias ai="gemini"
+alias gg="goto-ssh"
+alias start="sudo systemctl start $argv"
+alias stop="sudo systemctl stop $argv"
+alias restart="sudo systemctl restart $argv"
 
 abbr a php artisan
 abbr va valet php artisan
@@ -21,9 +26,12 @@ abbr listener php artisan make:listener
 abbr job php artisan make:job
 abbr seeder php artisan make:seeder
 abbr tinker php artisan tinker
+abbr rl php artisan route:list
 
 # Git aliases
 abbr lg lazygit
+abbr ld lazydocker
+abbr lq lazysql
 abbr rf 'exec fish'
 abbr g git
 abbr ga 'git add'
