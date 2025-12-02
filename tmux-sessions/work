@@ -21,9 +21,19 @@ PROJECT_CONF="$HOME/Projects/dotfiles/tmux-sessions/${PROJECT_NAME}.conf"
 
 source "$DEFAULT_CONF"
 
-if [ -f "$PROJECT_CONF" ]; then
-  source "$PROJECT_CONF"
+if [ ! -f "$PROJECT_CONF" ]; then
+  if [ -d "$PROJECT_DIR" ]; then
+    mkdir -p "$HOME/.config/tmux-projects"
+
+    cat >"$PROJECT_CONF" <<EOF
+WINDOW_4_NAME="work"
+WINDOW_4_PANES=()
+EOF
+  fi
 fi
+
+source "$DEFAULT_CONF"
+source "$PROJECT_CONF"
 
 tmux has-session -t "$SESSION" 2>/dev/null
 if [ $? != 0 ]; then
