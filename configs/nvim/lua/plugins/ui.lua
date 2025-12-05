@@ -57,133 +57,26 @@ return {
         },
     },
     {
-        "catppuccin/nvim",
-        lazy = true,
-        name = "catppuccin",
+        "f-person/auto-dark-mode.nvim",
         opts = {
-            transparent_background = true,
-            integrations = {
-                aerial = true,
-                alpha = true,
-                cmp = true,
-                dashboard = true,
-                flash = true,
-                fzf = true,
-                grug_far = true,
-                gitsigns = true,
-                headlines = true,
-                illuminate = true,
-                indent_blankline = { enabled = true },
-                leap = true,
-                lsp_trouble = true,
-                mason = true,
-                markdown = true,
-                mini = true,
-                native_lsp = {
-                    enabled = true,
-                    underlines = {
-                        errors = { "undercurl" },
-                        hints = { "undercurl" },
-                        warnings = { "undercurl" },
-                        information = { "undercurl" },
-                    },
-                },
-                navic = { enabled = true, custom_bg = "lualine" },
-                neotest = true,
-                neotree = true,
-                noice = true,
-                notify = true,
-                semantic_tokens = true,
-                snacks = true,
-                telescope = true,
-                treesitter = true,
-                treesitter_context = true,
-                which_key = true,
-            },
+            set_dark_mode = function()
+                vim.api.nvim_set_option_value("background", "dark", {})
+            end,
+            set_light_mode = function()
+                vim.api.nvim_set_option_value("background", "light", {})
+            end,
+            update_interval = 3000,
+            fallback = "dark",
         },
     },
     {
-        "LazyVim/LazyVim",
+        "tokyonight.nvim",
         opts = {
-            colorscheme = "catppuccin-mocha",
+            transparent = true,
+            styles = {
+                sidebars = "transparent",
+                floats = "transparent",
+            },
         },
     },
-    -- {
-    --     "nvim-lualine/lualine.nvim",
-    --     opts = function()
-    --         -- PERF: we don't need this lualine require madness 🤷
-    --         local lualine_require = require("lualine_require")
-    --         lualine_require.require = require
-    --
-    --         local icons = LazyVim.config.icons
-    --
-    --         vim.o.laststatus = vim.g.lualine_laststatus
-    --
-    --         vim.api.nvim_create_autocmd("FileType", {
-    --             pattern = { "markdown", "text", "gitcommit" },
-    --             callback = function()
-    --                 vim.opt_local.spell = false
-    --             end,
-    --         })
-    --
-    --         local opts = {
-    --             options = {
-    --                 theme = "auto",
-    --                 globalstatus = vim.o.laststatus == 3,
-    --                 disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
-    --                 component_separators = "",
-    --                 section_separators = { left = "", right = "" },
-    --             },
-    --             sections = {
-    --                 lualine_a = { "mode" },
-    --                 lualine_b = { "branch" },
-    --
-    --                 lualine_c = {
-    --                     Snacks.profiler.status(),
-    --                     {
-    --                         "diff",
-    --                         symbols = {
-    --                             added = icons.git.added,
-    --                             modified = icons.git.modified,
-    --                             removed = icons.git.removed,
-    --                         },
-    --                         source = function()
-    --                             local gitsigns = vim.b.gitsigns_status_dict
-    --                             if gitsigns then
-    --                                 return {
-    --                                     added = gitsigns.added,
-    --                                     modified = gitsigns.changed,
-    --                                     removed = gitsigns.removed,
-    --                                 }
-    --                             end
-    --                         end,
-    --                     },
-    --                 },
-    --                 lualine_x = {},
-    --                 lualine_y = {
-    --                     LazyVim.lualine.root_dir(),
-    --                     {
-    --                         "diagnostics",
-    --                         symbols = {
-    --                             error = icons.diagnostics.Error,
-    --                             warn = icons.diagnostics.Warn,
-    --                             info = icons.diagnostics.Info,
-    --                             hint = icons.diagnostics.Hint,
-    --                         },
-    --                     },
-    --                     { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-    --                     { LazyVim.lualine.pretty_path() },
-    --                 },
-    --                 lualine_z = {
-    --                     function()
-    --                         return "  " .. os.date("%R")
-    --                     end,
-    --                 },
-    --             },
-    --             extensions = { "neo-tree", "lazy", "fzf" },
-    --         }
-    --
-    --         return opts
-    --     end,
-    -- },
 }

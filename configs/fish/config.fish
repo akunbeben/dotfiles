@@ -108,3 +108,6 @@ end
 
 # Created by `pipx` on 2025-11-26 09:02:06
 set PATH $PATH /home/benny/.local/bin
+
+# opencode
+fish_add_path /home/benny/.opencode/bin

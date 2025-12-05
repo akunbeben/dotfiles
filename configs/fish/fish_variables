@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export GEMINI_API_KEY:AIzaSyCv9DvQD8uXx\x2dUMMO_a6pNaBV6iRpqRnvI
-SETUVAR --export --path PATH:/home/benny/\x2elocal/bin/phpenv/bin\x1e/home/ben/go/bin\x1e/usr/local/go/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/home/benny/\x2enpm\x2dglobal/bin\x1e/home/benny/\x2enpm\x2dglobal/lib\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/home/benny/\x2ebun/bin\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/home/benny/\x2ebun/bin\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/home/ben/\x2elocal/share/pnpm\x1e/home/benny/\x2ebun/bin\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/benny/\x2elocal/bin\x1e/home/benny/\x2elocal/bin\x1e/home/benny/\x2elocal/bin
+SETUVAR --export --path PATH:/home/benny/\x2elocal/bin/phpenv/bin\x1e/home/ben/go/bin\x1e/usr/local/go/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/home/benny/\x2eopencode/bin\x1e/home/benny/\x2enpm\x2dglobal/bin\x1e/home/benny/\x2enpm\x2dglobal/lib\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/home/benny/\x2elocal/share/nvim/mason/bin\x1e/home/benny/\x2ebun/bin\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/home/benny/\x2ebun/bin\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/home/ben/\x2elocal/share/pnpm\x1e/home/benny/\x2ebun/bin\x1e/home/benny/Android/android\x2dstudio/bin\x1e/home/benny/Projects/scripting\x1e/home/benny/\x2econfig/fvm/bin\x1e/home/benny/\x2econfig/composer/vendor/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/benny/\x2elocal/bin\x1e/home/benny/\x2elocal/bin\x1e/home/benny/\x2elocal/bin
 SETUVAR --export --path TMUX_PLUGIN_MANAGER_PATH:/home/ben/\x2etmux/plugins/
 SETUVAR __done_min_cmd_duration:10000
 SETUVAR __done_notification_urgency_level:low
@@ -48,46 +48,46 @@ SETUVAR _fish_abbr_src:cd\x20\x7e/src
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_color_autosuggestion:6B7280
-SETUVAR fish_color_cancel:bf616a
-SETUVAR fish_color_command:5e81ac
-SETUVAR fish_color_comment:a3be8c
-SETUVAR fish_color_cwd:59C2FF\x1e\x2d\x2dunderline\x3dFalse
-SETUVAR fish_color_cwd_root:red\x1e\x2d\x2dunderline\x3dFalse
-SETUVAR fish_color_end:0087af
-SETUVAR fish_color_error:81a1c1
-SETUVAR fish_color_escape:444444
-SETUVAR fish_color_history_current:d08770
-SETUVAR fish_color_host:normal\x1e\x2d\x2dunderline\x3dFalse
-SETUVAR fish_color_host_remote:yellow\x1e\x2d\x2dunderline\x3dFalse
-SETUVAR fish_color_keyword:39BAE6\x1e\x2d\x2dunderline\x3dFalse
+SETUVAR fish_color_autosuggestion:707A8C
+SETUVAR fish_color_cancel:\x2d\x2dreverse
+SETUVAR fish_color_command:5CCFE6
+SETUVAR fish_color_comment:5C6773
+SETUVAR fish_color_cwd:73D0FF
+SETUVAR fish_color_cwd_root:red
+SETUVAR fish_color_end:F29E74
+SETUVAR fish_color_error:FF3333
+SETUVAR fish_color_escape:95E6CB
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:normal
+SETUVAR fish_color_host_remote:yellow
+SETUVAR fish_color_keyword:5CCFE6
 SETUVAR fish_color_match:bf616a
-SETUVAR fish_color_normal:eceff4
-SETUVAR fish_color_operator:b48ead
-SETUVAR fish_color_option:B3B1AD\x1e\x2d\x2dunderline\x3dFalse
-SETUVAR fish_color_param:88c0d0
-SETUVAR fish_color_quote:a3be8c
-SETUVAR fish_color_redirection:005faf
-SETUVAR fish_color_search_match:5e81ac
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_normal:CBCCC6
+SETUVAR fish_color_operator:FFCC66
+SETUVAR fish_color_option:CBCCC6
+SETUVAR fish_color_param:CBCCC6
+SETUVAR fish_color_quote:BAE67E
+SETUVAR fish_color_redirection:D4BFFF
+SETUVAR fish_color_search_match:\x2d\x2dbold\x1e\x2d\x2dbackground\x3dFFCC66
+SETUVAR fish_color_selection:\x2d\x2dbold\x1e\x2d\x2dbackground\x3dFFCC66
 SETUVAR fish_color_status:red
-SETUVAR fish_color_user:brgreen\x1e\x2d\x2dunderline\x3dFalse
-SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_color_user:brgreen
+SETUVAR fish_color_valid_path:\x2d\x2dunderline\x3dsingle
 SETUVAR fish_key_bindings:fish_default_key_bindings
 SETUVAR fish_pager_color_background:\x1d
-SETUVAR fish_pager_color_completion:0087af
-SETUVAR fish_pager_color_description:yellow
-SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_pager_color_description:B3A06D
+SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline\x3dsingle
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_secondary_background:\x1d
 SETUVAR fish_pager_color_secondary_completion:\x1d
 SETUVAR fish_pager_color_secondary_description:\x1d
 SETUVAR fish_pager_color_secondary_prefix:\x1d
-SETUVAR fish_pager_color_selected_background:\x2d\x2dunderline\x3dFalse\x1e\x2d\x2dbackground\x3d\x3dE6B450
+SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dFFCC66
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/ben/go/bin\x1e/usr/local/go/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/home/benny/\x2enpm\x2dglobal/bin\x1e/home/benny/\x2enpm\x2dglobal/lib
+SETUVAR fish_user_paths:/home/ben/go/bin\x1e/usr/local/go/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/home/benny/\x2eopencode/bin\x1e/home/benny/\x2enpm\x2dglobal/bin\x1e/home/benny/\x2enpm\x2dglobal/lib
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute

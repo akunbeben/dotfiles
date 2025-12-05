@@ -26,7 +26,7 @@ if [ ! -f "$PROJECT_CONF" ]; then
     mkdir -p "$HOME/.config/tmux-projects"
 
     cat >"$PROJECT_CONF" <<EOF
-WINDOW_4_NAME="work"
+WINDOW_4_NAME="monitor"
 WINDOW_4_PANES=()
 EOF
   fi
