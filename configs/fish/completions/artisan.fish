@@ -1,26 +1,13 @@
-function __artisan_find
-    set dir (pwd)
-    while test "$dir" != /
-        if test -f "$dir/artisan"
-            echo "$dir/artisan"
-            return 0
-        end
-        set dir (dirname "$dir")
-    end
-    return 1
+function __fish_artisan_commands_with_descriptions
+    begin
+        php artisan list --raw 2>/dev/null
+        or return
+    end | grep -vE '^ ' | string replace -r '\s+' '\t'
 end
 
-function __artisan_commands
-    set artisan_path (__artisan_find)
-    if test -z "$artisan_path"
-        return
-    end
-
-    # Jalankan hanya jika artisan bisa dieksekusi
-    php $artisan_path --no-ansi --raw list ^ /dev/null |
-        string split \n |
-        string match -r '^[a-zA-Z0-9:\-]+' |
-        string trim
+function __fish_artisan_commands
+    __fish_artisan_commands_with_descriptions | cut -f 1
 end
 
-complete -c artisan -f -a "(__artisan_commands)"
+complete -c artisan -f -n 'test -f artisan; and __fish_use_subcommand' -a '(__fish_artisan_commands_with_descriptions)'
+complete -c artisan -f -n 'test -f artisan; and __fish_seen_subcommand_from help' -a '(__fish_artisan_commands)'

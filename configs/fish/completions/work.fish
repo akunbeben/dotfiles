@@ -12,5 +12,4 @@ function __tmux_work_projects
     end
 end
 
-complete -c work -f
-complete -c work --no-files -a "(__tmux_work_projects)"
+complete -c work -f -a "edit (__tmux_work_projects)"

@@ -1,5 +1,29 @@
 #!/bin/bash
 
+if [ "$1" = "edit" ]; then
+  if [ "$2" = "." ]; then
+    CURRENT_DIR=$(pwd)
+    if [[ "$CURRENT_DIR" == "$HOME/Projects/"* ]]; then
+      PROJECT_NAME=$(basename "$CURRENT_DIR")
+    else
+      echo "Error: Not in a Projects directory"
+      exit 1
+    fi
+  else
+    PROJECT_NAME="$2"
+  fi
+  CONF_FILE="$HOME/Projects/dotfiles/tmux-sessions/${PROJECT_NAME}.conf"
+  if [ ! -f "$CONF_FILE" ]; then
+    mkdir -p "$HOME/.config/tmux-projects"
+    cat >"$CONF_FILE" <<EOF
+WINDOW_4_NAME="monitor"
+WINDOW_4_PANES=()
+EOF
+  fi
+  ${EDITOR:-nvim} "$CONF_FILE"
+  exit 0
+fi
+
 PROJECT_NAME="$1"
 
 if [ -z "$PROJECT_NAME" ]; then
@@ -38,16 +62,16 @@ source "$PROJECT_CONF"
 tmux has-session -t "$SESSION" 2>/dev/null
 if [ $? != 0 ]; then
 
-  tmux new-session -d -s "$SESSION" -c "$PROJECT_DIR" -n "$WINDOW_1_NAME"
+  tmux new-session -d -s "$SESSION" -c "$PROJECT_DIR"
   tmux send-keys -t "$SESSION:0" "$WINDOW_1_COMMAND" C-m
 
-  tmux new-window -t "$SESSION" -n "$WINDOW_2_NAME" -c "$PROJECT_DIR"
+  tmux new-window -t "$SESSION" -c "$PROJECT_DIR"
   [ ! -z "$WINDOW_2_COMMAND" ] && tmux send-keys -t "$SESSION:1" "$WINDOW_2_COMMAND" C-m
 
-  tmux new-window -t "$SESSION" -n "$WINDOW_3_NAME" -c "$PROJECT_DIR"
+  tmux new-window -t "$SESSION" -c "$PROJECT_DIR"
   [ ! -z "$WINDOW_3_COMMAND" ] && tmux send-keys -t "$SESSION:2" "$WINDOW_3_COMMAND" C-m
 
-  tmux new-window -t "$SESSION" -n "$WINDOW_4_NAME" -c "$PROJECT_DIR"
+  tmux new-window -t "$SESSION" -c "$PROJECT_DIR"
 
   i=0
   for cmd in "${WINDOW_4_PANES[@]}"; do

@@ -13,6 +13,7 @@ alias gg="goto-ssh"
 alias start="sudo systemctl start $argv"
 alias stop="sudo systemctl stop $argv"
 alias restart="sudo systemctl restart $argv"
+alias mysqldump="/usr/bin/mariadb-dump"
 
 abbr a php artisan
 abbr va valet php artisan
@@ -81,7 +82,7 @@ set -gx PATH $HOME/Android/android-studio/bin $PATH
 
 set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
 set -U fish_user_paths /usr/local/go/bin $fish_user_paths
-set -U fish_user_paths /home/ben/go/bin $fish_user_paths
+set -U fish_user_paths /home/benny/go/bin $fish_user_paths
 
 set -x PHPENV_ROOT ~/.local/bin/phpenv
 if test -d $PHPENV_ROOT
@@ -97,10 +98,12 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 set fish_greeting
 
+set EDITOR nvim
+
 envsource "$HOME/.env"
 
 # pnpm
-set -gx PNPM_HOME "/home/ben/.local/share/pnpm"
+set -gx PNPM_HOME "/home/benny/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
