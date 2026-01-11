@@ -1,2 +1,5 @@
 .env*
 tmux-sessions/**.conf
+**.tmp
+.DS_Store
+bin/**

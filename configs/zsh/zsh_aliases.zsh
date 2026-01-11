@@ -1,0 +1,36 @@
+# Zsh aliases migrated from Fish
+
+# Basic aliases
+alias q="exit"
+alias c="clear"
+alias l="eza --long --icons --group-directories-first"
+alias vim="nvim"
+alias vimconf="vim ~/.config/nvim"
+alias install="pacseek"
+alias i="pacseek"
+alias uninstall="sudo apt remove --purge && sudo apt autoremove --purge -y"
+alias ls="eza --long --icons --group-directories-first"
+alias ll="eza --long --icons --group-directories-first --all"
+alias ai="gemini"
+alias gg="goto-ssh"
+alias mysqldump="/usr/bin/mariadb-dump"
+
+alias a="php artisan"
+alias va="valet php artisan"
+alias migrate="php artisan migrate"
+alias rollback="php artisan migrate:rollback"
+alias model="php artisan make:model"
+alias controller="php artisan make:controller"
+alias request="php artisan make:request"
+alias event="php artisan make:event"
+alias listener="php artisan make:listener"
+alias job="php artisan make:job"
+alias seeder="php artisan make:seeder"
+alias tinker="php artisan tinker"
+alias rl="php artisan route:list"
+
+# Git aliases
+alias lg="lazygit"
+alias ld="lazydocker"
+alias lq="lazysql"
+alias r="source $HOME/.zshrc"
