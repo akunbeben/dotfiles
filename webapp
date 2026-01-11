@@ -1,0 +1,164 @@
+#!/bin/bash
+
+# macOS WebApp Launcher
+# Migrated from Linux xdg-settings approach
+
+profile="Default"
+debug_port=9222
+url=""
+extra_args=()
+browser_name=""
+
+# Browser paths mapping (compatible with bash 3.x)
+get_browser_path() {
+  case "$1" in
+    "Google Chrome") echo "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ;;
+    "Brave Browser") echo "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" ;;
+    "Microsoft Edge") echo "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge" ;;
+    "Safari") echo "/Applications/Safari.app/Contents/MacOS/Safari" ;;
+    "Chromium") echo "/Applications/Chromium.app/Contents/MacOS/Chromium" ;;
+    *) echo "" ;;
+  esac
+}
+
+get_default_browser() {
+  local plist="$HOME/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
+  
+  # Check if plist exists
+  if [[ ! -f "$plist" ]]; then
+    echo "Brave Browser"  # Fallback to Brave
+    return
+  fi
+  
+  # Get default browser bundle ID
+  local bundle_id
+  bundle_id=$(plutil -convert json -o - "$plist" 2>/dev/null | \
+    jq -r '.LSHandlers[] | select(.LSHandlerURLScheme=="https") | .LSHandlerRoleAll' 2>/dev/null | \
+    head -1)
+  
+  # Convert bundle ID to browser name
+  case "$bundle_id" in
+    "com.google.chrome") echo "Google Chrome" ;;
+    "com.brave.Browser") echo "Brave Browser" ;;
+    "com.microsoft.edgestable") echo "Microsoft Edge" ;;
+    "com.apple.safari") echo "Safari" ;;
+    *) echo "Brave Browser" ;;  # Fallback
+  esac
+}
+
+find_browser_binary() {
+  local browser="$1"
+  local path=$(get_browser_path "$browser")
+  
+  # If mapped path exists and is executable, use it
+  if [[ -f "$path" && -x "$path" ]]; then
+    echo "$path"
+    return
+  fi
+  
+  # Fallback: search /Applications directory
+  find /Applications -name "${browser}.app" -type d 2>/dev/null | while read app; do
+    local binary="$app/Contents/MacOS/$(basename "$app" .app)"
+    if [[ -f "$binary" && -x "$binary" ]]; then
+      echo "$binary"
+      return
+    fi
+  done
+}
+
+show_help() {
+  cat << EOF
+Usage: $(basename "$0") [OPTIONS] [URL]
+
+Launch web applications in browser app mode on macOS
+
+OPTIONS:
+    -p, --profile PROFILE     Browser profile directory (default: Default)
+    -d, --debug-port PORT     Remote debugging port (default: 9222)
+    -b, --browser BROWSER     Specific browser to use
+    -h, --help               Show this help message
+
+EXAMPLES:
+    $(basename "$0") https://web.whatsapp.com
+    $(basename "$0") -p "Work" -d 9223 https://gmail.com
+    $(basename "$0") -b "Google Chrome" https://notion.so
+
+SUPPORTED BROWSERS:
+    Google Chrome, Brave Browser, Microsoft Edge, Safari, Chromium
+EOF
+}
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --profile | -p)
+      profile="$2"
+      shift 2
+      ;;
+    --debug-port | -d)
+      debug_port="$2"
+      shift 2
+      ;;
+    --browser | -b)
+      browser_name="$2"
+      shift 2
+      ;;
+    --help | -h)
+      show_help
+      exit 0
+      ;;
+    *)
+      if [[ -z "$url" ]]; then
+        url="$1"
+      else
+        extra_args+=("$1")
+      fi
+      shift
+      ;;
+  esac
+done
+
+# Validate URL
+if [[ -z "$url" ]]; then
+  echo "Error: URL is required"
+  echo "Use --help for usage information"
+  exit 1
+fi
+
+# Validate URL format
+if [[ ! "$url" =~ ^https?:// ]]; then
+  echo "Error: URL must start with http:// or https://"
+  exit 1
+fi
+
+# Determine browser to use
+if [[ -z "$browser_name" ]]; then
+  browser_name=$(get_default_browser)
+fi
+
+# Find browser binary
+browser_path=$(find_browser_binary "$browser_name")
+
+if [[ -z "$browser_path" ]]; then
+  echo "Error: Browser '$browser_name' not found"
+  echo "Available browsers: Google Chrome, Brave Browser, Microsoft Edge, Safari, Chromium"
+  exit 1
+fi
+
+# Special handling for Safari (doesn't support --app flag)
+if [[ "$browser_name" == "Safari" ]]; then
+  echo "Launching Safari with URL: $url"
+  open -a Safari "$url"
+  exit 0
+fi
+
+# Launch webapp
+echo "Launching $browser_name with profile '$profile' and URL: $url"
+
+exec "$browser_path" \
+  --profile-directory="$profile" \
+  --remote-debugging-port="$debug_port" \
+  --app="$url" \
+  --no-first-run \
+  --no-default-browser-check \
+  "${extra_args[@]}"
