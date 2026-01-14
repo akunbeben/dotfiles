@@ -116,7 +116,7 @@ on-mode-changed = []
     cmd-shift-b = "exec-and-forget open -na Brave\\ Browser --args --profile-directory=\"Profile 1\""
 
     # Screenshot shortcuts
-    cmd-p = "exec-and-forget screencapture -c -i \"$HOME/Pictures/Screenshots/$(date +%s).png\""
+    cmd-ctrl-p = "exec-and-forget screencapture -c -i \"$HOME/Pictures/Screenshots/$(date +%s).png\""
     cmd-shift-p = "exec-and-forget screencapture -c \"$HOME/Pictures/Screenshots/$(date +%s).png\""
     cmd-alt-p = "exec-and-forget screencapture -c -w \"$HOME/Pictures/Screenshots/$(date +%s).png\""
 

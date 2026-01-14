@@ -76,22 +76,10 @@ abbr ..5 'cd ../../../../..'
 abbr shadcn 'bunx --bun shadcn@latest add'
 
 set -gx PATH $HOME/.config/composer/vendor/bin $PATH
-set -gx PATH $HOME/.config/fvm/bin $PATH
 set -gx PATH $HOME/Projects/scripting $PATH
-set -gx PATH $HOME/Android/android-studio/bin $PATH
-
-set -U fish_user_paths /opt/nvim-linux-x86_64/bin $fish_user_paths
-set -U fish_user_paths /usr/local/go/bin $fish_user_paths
-set -U fish_user_paths /home/benny/go/bin $fish_user_paths
-
-set -x PHPENV_ROOT ~/.local/bin/phpenv
-if test -d $PHPENV_ROOT
-    set -x PATH $PHPENV_ROOT/shims $PHPENV_ROOT/bin $PATH
-    eval (phpenv init - | string collect)
-end
-
-set -Ux PATH $HOME/.local/bin/phpenv/shims $PATH
-set -Ux PATH $HOME/.local/bin/phpenv/bin $PATH
+set -gx PATH /opt/homebrew/bin $PATH
+set -gx PATH $HOME/.opencode/bin $PATH
+set -gx PATH $HOME/Projects/dotfiles/bin $PATH
 
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
@@ -102,15 +90,4 @@ set EDITOR nvim
 
 envsource "$HOME/.env"
 
-# pnpm
-set -gx PNPM_HOME "/home/benny/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-# Created by `pipx` on 2025-11-26 09:02:06
-set PATH $PATH /home/benny/.local/bin
-
-# opencode
-fish_add_path /home/benny/.opencode/bin
+starship init fish | source

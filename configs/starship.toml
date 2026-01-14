@@ -1,0 +1,47 @@
+add_newline = false
+
+format = """
+$battery\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+read_only = " "
+
+[battery]
+full_symbol = "•"
+charging_symbol = "⇡"
+discharging_symbol = "⇣"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bold blue"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](bold blue) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bold blue"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[line_break]
+disabled = true
