@@ -5,9 +5,9 @@
 #     man fish-interactive | less +/^SYNTAX.HIGHLIGHTING
 # for appropriate commands to add to ~/.config/fish/config.fish instead.
 
-set --global fish_color_autosuggestion 707A8C
+set --global fish_color_autosuggestion 87afff
 set --global fish_color_cancel --reverse
-set --global fish_color_command 5CCFE6
+set --global fish_color_command 00afff
 set --global fish_color_comment 5C6773
 set --global fish_color_cwd 73D0FF
 set --global fish_color_cwd_root red
@@ -22,8 +22,8 @@ set --global fish_color_match bf616a
 set --global fish_color_normal CBCCC6
 set --global fish_color_operator FFCC66
 set --global fish_color_option CBCCC6
-set --global fish_color_param CBCCC6
-set --global fish_color_quote BAE67E
+set --global fish_color_param 0087ff
+set --global fish_color_quote 5fd700
 set --global fish_color_redirection D4BFFF
 set --global fish_color_search_match --bold --background=FFCC66
 set --global fish_color_selection --bold --background=FFCC66
