@@ -110,6 +110,7 @@ on-mode-changed = []
     cmd-r = "exec-and-forget open -a System\\ Settings"
     cmd-d = "exec-and-forget open -a TablePlus"
     cmd-w = "exec-and-forget open -a WhatsApp"
+    cmd-e = "exec-and-forget open -a Finder"
     
     # Browser shortcuts
     cmd-b = "exec-and-forget open -na Brave\\ Browser --args --profile-directory=\"Default\""

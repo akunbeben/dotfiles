@@ -14,6 +14,7 @@ alias start="sudo systemctl start $argv"
 alias stop="sudo systemctl stop $argv"
 alias restart="sudo systemctl restart $argv"
 alias mysqldump="/usr/bin/mariadb-dump"
+alias dot="nvim ~/Projects/dotfiles"
 
 abbr a php artisan
 abbr va valet php artisan
@@ -28,6 +29,7 @@ abbr job php artisan make:job
 abbr seeder php artisan make:seeder
 abbr tinker php artisan tinker
 abbr rl php artisan route:list
+abbr pint ./vendor/bin/pint
 
 # Git aliases
 abbr lg lazygit
@@ -58,6 +60,8 @@ abbr gsp 'git stash pop'
 abbr gsta 'git stash'
 abbr gstl 'git stash list'
 abbr gsts 'git stash show -p'
+abbr gpersonal 'git config user.email "akunbeben@gmail.com"'
+abbr gwork 'git config user.email "benny.rahmat@thrive.co.id"'
 
 abbr cdd 'cd -'
 abbr home 'cd ~'

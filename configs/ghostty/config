@@ -1,12 +1,12 @@
 font-style = Medium
 
-window-padding-x = 0
+window-padding-x = 5
 window-padding-y = 0
 window-padding-balance = true
 confirm-close-surface = false
-background-opacity = 1
+background-opacity = 0.95
 
 window-theme = system
-theme = light:TokyoNight Day,dark:TokyoNight Night
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 
 macos-option-as-alt = true
