@@ -23,10 +23,6 @@ discharging_symbol = "⇣"
 format = "[$branch]($style)"
 style = "bold blue"
 
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](bold blue) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bold blue"

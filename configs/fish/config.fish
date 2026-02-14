@@ -1,6 +1,8 @@
 alias q="exit"
 alias c="clear"
 alias l="eza --long --icons --group-directories-first"
+alias v="nvim ."
+alias t="tmux a"
 alias vim="nvim $argv"
 alias vimconf="vim ~/.config/nvim"
 alias install="pacseek"
@@ -15,6 +17,7 @@ alias stop="sudo systemctl stop $argv"
 alias restart="sudo systemctl restart $argv"
 alias mysqldump="/usr/bin/mariadb-dump"
 alias dot="nvim ~/Projects/dotfiles"
+alias as="open -a \"Antigravity\" --args --disable-gpu-driver-bug-workarounds --ignore-gpu-blacklist --enable-gpu-rasterization $argv"
 
 abbr a php artisan
 abbr va valet php artisan
@@ -29,13 +32,17 @@ abbr job php artisan make:job
 abbr seeder php artisan make:seeder
 abbr tinker php artisan tinker
 abbr rl php artisan route:list
-abbr pint ./vendor/bin/pint
+abbr lint ./vendor/bin/pint
+
+abbr delete rm -rfv
+abbr r 'exec fish'
+
+abbr n n8n-node
 
 # Git aliases
 abbr lg lazygit
 abbr ld lazydocker
 abbr lq lazysql
-abbr rf 'exec fish'
 abbr g git
 abbr ga 'git add'
 abbr gaa 'git add .'
@@ -47,6 +54,7 @@ abbr gd 'git diff'
 abbr gl 'git pull'
 abbr glog 'git log --oneline --graph --decorate'
 abbr gp 'git push'
+abbr gpo 'git push origin'
 abbr gpf 'git push --force'
 abbr gst 'git status'
 abbr gr 'git remote -v'
@@ -95,3 +103,10 @@ set EDITOR nvim
 envsource "$HOME/.env"
 
 starship init fish | source
+
+# pnpm
+set -gx PNPM_HOME /Users/benny/Library/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

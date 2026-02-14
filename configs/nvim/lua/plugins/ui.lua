@@ -100,15 +100,34 @@ return {
         end,
     },
     {
+        "uloco/bluloco.nvim",
+        lazy = false,
+        priority = 1000,
+        dependencies = { "rktjmp/lush.nvim" },
+        config = function()
+            require("bluloco").setup({
+                style = "auto", -- "auto" | "dark" | "light"
+                transparent = true,
+                italics = false,
+                terminal = vim.fn.has("gui_running") == 1, -- bluoco colors are enabled in gui terminals per default.
+                guicursor = true,
+                rainbow_headings = false, -- if you want different colored headings for each heading level
+                float_window = "default", -- "default" | "transparent"
+            })
+
+            vim.opt.termguicolors = true
+        end,
+    },
+    {
         "f-person/auto-dark-mode.nvim",
         opts = {
             set_dark_mode = function()
                 vim.api.nvim_set_option_value("background", "dark", {})
-                vim.cmd("colorscheme catppuccin")
+                vim.cmd("colorscheme bluloco")
             end,
             set_light_mode = function()
                 vim.api.nvim_set_option_value("background", "light", {})
-                vim.cmd("colorscheme catppuccin-latte")
+                vim.cmd("colorscheme bluloco")
             end,
             update_interval = 3000,
             fallback = "dark",

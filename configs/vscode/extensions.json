@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "asvetliakov.vscode-neovim",
+        "Catppuccin.catppuccin-vsc",
+        "pkief.material-icon-theme",
+        "supermaven.supermaven-vscode",
+        "golang.go",
+        "amiralizadeh.laravel-extra-intellisense",
+        "onecentlin.laravel-blade",
+        "onecentlin.laravel-goto-view",
+        "dbaeumer.vscode-eslint"
+    ]
+}

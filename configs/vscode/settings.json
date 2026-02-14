@@ -1,0 +1,23 @@
+{
+    "terminal.external.osxExec": "Ghostty.app",
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "workbench.colorTheme": "Black",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "editor.fontFamily": "'RecMonoCasual Nerd Font', 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "off",
+    "editor.cursorSurroundingLines": 99,
+    "explorer.autoReveal": true,
+    "window.titleBarStyle": "custom",
+    "workbench.startupEditor": "none",
+    "workbench.sideBar.location": "right",
+    "editor.lineNumbers": "relative",
+    "workbench.activityBar.location": "hidden",
+    "go.toolsManagement.autoUpdate": true,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
+}
