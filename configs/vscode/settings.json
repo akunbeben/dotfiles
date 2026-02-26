@@ -15,7 +15,6 @@
     "workbench.startupEditor": "none",
     "workbench.sideBar.location": "right",
     "editor.lineNumbers": "relative",
-    "workbench.activityBar.location": "hidden",
     "go.toolsManagement.autoUpdate": true,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1

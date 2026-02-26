@@ -1,31 +1,4 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 add_newline = false
-
-format = """
-$battery\
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$line_break\
-$character"""
-
-[directory]
-read_only = " "
-
-[battery]
-full_symbol = "•"
-charging_symbol = "⇡"
-discharging_symbol = "⇣"
-
-[git_branch]
-format = "[$branch]($style)"
-style = "bold blue"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bold blue"
-
-[line_break]
-disabled = true

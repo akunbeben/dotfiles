@@ -133,6 +133,8 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     cmd-alt-h = 'move left'
     cmd-alt-l = 'move right'
+    cmd-alt-j = 'move down'
+    cmd-alt-k = 'move up'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     cmd-shift-h = 'resize smart -50'
