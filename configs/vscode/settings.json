@@ -3,8 +3,8 @@
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "editor.stickyScroll.enabled": false,
-    "workbench.colorTheme": "Black",
-    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.iconTheme": "catppuccin-macchiato",
     "editor.fontFamily": "'RecMonoCasual Nerd Font', 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 13,
     "editor.fontLigatures": true,
@@ -18,5 +18,11 @@
     "go.toolsManagement.autoUpdate": true,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
-    }
+    },
+    "php.suggest.basic": false,
+    "php.validate.enable": false,
+    "emmet.excludeLanguages": [
+        "markdown",
+        "php"
+    ]
 }

@@ -51,7 +51,7 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejomik/fish\x2dgruvbox\x1esujaybokil/fish\x2dgruvbox
 SETUVAR _fisher_sujaybokil_2F_fish_2D_gruvbox_files:\x7e/\x2econfig/fish/conf\x2ed/gruvbox\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_user_paths:/home/benny/go/bin\x1e/usr/local/go/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/home/ben/go/bin\x1e/home/benny/\x2eopencode/bin\x1e/home/benny/\x2enpm\x2dglobal/bin\x1e/home/benny/\x2enpm\x2dglobal/lib
+SETUVAR fish_user_paths:/Users/benny/\x2eantigravity/antigravity/bin\x1e/home/benny/go/bin\x1e/usr/local/go/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/home/ben/go/bin\x1e/home/benny/\x2eopencode/bin\x1e/home/benny/\x2enpm\x2dglobal/bin\x1e/home/benny/\x2enpm\x2dglobal/lib
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute

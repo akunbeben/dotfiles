@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# parent_cmd=$(ps -o comm= -p $PPID 2>/dev/null)
+# if [[ "$parent_cmd" != "systemd" && "$parent_cmd" != "bash" ]]; then
+#   echo "❌ ERROR: This script must run as a daemon." >&2
+#   logger -t pomodoro_blocker "Rejected execution attempt: parent process '$parent_cmd'"
+#   exit 1
+# fi
+
+BLOCKLIST=(
+  "www.facebook.com"
+  "facebook.com"
+  "www.youtube.com"
+  "youtube.com"
+  "www.twitter.com"
+  "twitter.com"
+  "www.instagram.com"
+  "instagram.com"
+  "x.com"
+)
+HOSTS_FILE="/etc/hosts"
+BLOCK_MARKER="# POMODORO_BLOCK"
+
+block_sites() {
+  echo "[INFO] Blocking distracting sites..."
+  for site in "${BLOCKLIST[@]}"; do
+    if ! grep -q "$site $BLOCK_MARKER" $HOSTS_FILE; then
+      echo "127.0.0.1 $site $BLOCK_MARKER" | sudo tee -a $HOSTS_FILE >/dev/null
+    fi
+  done
+  echo "[INFO] Websites BLOCKED (Work phase)"
+  echo ""
+  logger -t pomodoro_blocker "Blocked distracting sites (Work phase)."
+}
+
+unblock_sites() {
+  sudo sed -i "/$BLOCK_MARKER/d" $HOSTS_FILE
+  echo "[INFO] Websites UNBLOCKED (Break/Idle phase)"
+  echo ""
+  logger -t pomodoro_blocker "Unblocked distracting sites (Break/Idle phase)."
+}
+
+handle_state() {
+  case "$1" in
+  pomodoro)
+    echo "[STATE] Detected Work phase: $1"
+    block_sites
+    ;;
+  short-break | long-break | null)
+    echo "[STATE] Detected Break/Idle phase: $1"
+    unblock_sites
+    ;;
+  *)
+    echo "[WARN] Unknown state detected: $1"
+    logger -t pomodoro_blocker "Unknown state: $1"
+    ;;
+  esac
+}
+
+current_state=$(gdbus call --session \
+  --dest org.gnome.Pomodoro \
+  --object-path /org/gnome/Pomodoro \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.gnome.Pomodoro State 2>/dev/null |
+  awk -F"'" '{print $2}')
+echo "[INIT] Initial Pomodoro state: $current_state"
+handle_state "$current_state"
+
+echo "[DAEMON] Monitoring Pomodoro StateChanged signals..."
+gdbus monitor --session \
+  --dest org.gnome.Pomodoro \
+  --object-path /org/gnome/Pomodoro |
+  while read -r line; do
+    if [[ "$line" == *"org.gnome.Pomodoro.StateChanged"* ]]; then
+      new_state=$(echo "$line" | awk -F"name': <'" '{print $2}' | awk -F"'>" '{print $1}')
+      echo "[EVENT] StateChanged detected: $new_state"
+      handle_state "$new_state"
+    fi
+  done

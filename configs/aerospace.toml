@@ -68,10 +68,10 @@ on-mode-changed = []
 [gaps]
     inner.horizontal = 8
     inner.vertical =   0
-    outer.left =       0
-    outer.bottom =     0
-    outer.top =        0
-    outer.right =      0
+    outer.left =       2
+    outer.bottom =     2
+    outer.top =        2
+    outer.right =      2
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -106,7 +106,7 @@ on-mode-changed = []
     # end tell'
     # '''
 
-    cmd-t = "exec-and-forget open -n -a Ghostty"
+    cmd-t = "exec-and-forget open -n -a Kitty"
     cmd-r = "exec-and-forget open -a System\\ Settings"
     cmd-d = "exec-and-forget open -a TablePlus"
     cmd-w = "exec-and-forget open -a WhatsApp"
@@ -118,9 +118,9 @@ on-mode-changed = []
     cmd-shift-b = "exec-and-forget open -na Brave\\ Browser --args --profile-directory=\"Profile 1\""
 
     # Screenshot shortcuts
-    cmd-ctrl-p = "exec-and-forget screencapture -c -i \"$HOME/Pictures/Screenshots/$(date +%s).png\""
-    cmd-shift-p = "exec-and-forget screencapture -c \"$HOME/Pictures/Screenshots/$(date +%s).png\""
-    cmd-alt-p = "exec-and-forget screencapture -c -w \"$HOME/Pictures/Screenshots/$(date +%s).png\""
+    cmd-ctrl-p = "exec-and-forget ~/Projects/dotfiles/bin/screenshot.sh"
+    cmd-shift-p = "exec-and-forget ~/Projects/dotfiles/bin/screenshot.sh"
+    cmd-alt-p = "exec-and-forget ~/Projects/dotfiles/bin/screenshot.sh -w"
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
@@ -159,6 +159,8 @@ on-mode-changed = []
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
+    
+    alt-shift-space = 'layout floating tiling'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

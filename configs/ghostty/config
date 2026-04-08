@@ -1,4 +1,3 @@
-font-family = RecMonoCasual Nerd Font Mono
 font-size = 14
 adjust-cell-height = 30%
 
@@ -6,10 +5,10 @@ window-padding-x = 5
 window-padding-y = 0
 window-padding-balance = true
 confirm-close-surface = false
-background-opacity = 0.95
+background-opacity = 1
 cursor-style-blink = false
 
 window-theme = system
-theme = light:Builtin Light,dark:Builtin Pastel Dark
+theme = light:Builtin Light,dark:Catppuccin Mocha
 
 macos-option-as-alt = true

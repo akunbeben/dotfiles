@@ -20,6 +20,8 @@ alias restart="sudo systemctl restart $argv"
 alias mysqldump="/usr/bin/mariadb-dump"
 alias dot="nvim ~/Projects/dotfiles"
 alias as="open -a \"Antigravity\" --args --disable-gpu-driver-bug-workarounds --ignore-gpu-blacklist --enable-gpu-rasterization $argv"
+alias php="valet php $argv"
+alias composer="valet composer $argv"
 
 abbr a php artisan
 abbr va valet php artisan
@@ -112,3 +114,19 @@ if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+export PATH="$HOME/.local/bin:$PATH"
+
+# Added by LM Studio CLI tool (lms)
+set -gx PATH $PATH /Users/benny/.lmstudio/bin
+
+# Added by Antigravity
+fish_add_path /Users/benny/.antigravity/antigravity/bin
+
+# Added by Antigravity
+fish_add_path /Users/benny/.antigravity/antigravity/bin
+
+# Added by Antigravity
+fish_add_path /Users/benny/.antigravity/antigravity/bin
+
+# Added by Antigravity
+fish_add_path /Users/benny/.antigravity/antigravity/bin

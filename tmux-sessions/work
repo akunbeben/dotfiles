@@ -2,19 +2,20 @@
 
 if [ "$1" = "edit" ]; then
   if [ "$2" = "." ]; then
-    CURRENT_DIR=$(pwd)
-    if [[ "$CURRENT_DIR" == "$HOME/Projects/"* ]]; then
-      PROJECT_NAME=$(basename "$CURRENT_DIR")
-    else
-      echo "Error: Not in a Projects directory"
-      exit 1
-    fi
+    PROJECT_DIR=$(pwd)
+    PROJECT_NAME=$(basename "$PROJECT_DIR")
   else
     PROJECT_NAME="$2"
   fi
+  
+  if [ -z "$PROJECT_NAME" ]; then
+    echo "Usage: work edit <project-name> or work edit ."
+    exit 1
+  fi
+
   CONF_FILE="$HOME/Projects/dotfiles/tmux-sessions/${PROJECT_NAME}.conf"
   if [ ! -f "$CONF_FILE" ]; then
-    mkdir -p "$HOME/.config/tmux-projects"
+    mkdir -p "$HOME/Projects/dotfiles/tmux-sessions"
     cat >"$CONF_FILE" <<EOF
 WINDOW_4_NAME="monitor"
 WINDOW_4_PANES=()
@@ -24,17 +25,21 @@ EOF
   exit 0
 fi
 
-PROJECT_NAME="$1"
+if [ "$1" = "." ]; then
+  PROJECT_DIR=$(pwd)
+  PROJECT_NAME=$(basename "$PROJECT_DIR")
+else
+  PROJECT_NAME="$1"
+  PROJECT_DIR="$HOME/Projects/$PROJECT_NAME"
+fi
 
 if [ -z "$PROJECT_NAME" ]; then
-  echo "Usage: work <project-name>"
+  echo "Usage: work <project-name> or work ."
   exit 1
 fi
 
-PROJECT_DIR="$HOME/Projects/$PROJECT_NAME"
-
 if [ ! -d "$PROJECT_DIR" ]; then
-  echo "Error: Project directory not found at $PROJECT_DIR"
+  echo "Error: Directory not found at $PROJECT_DIR"
   exit 1
 fi
 
@@ -43,11 +48,12 @@ SESSION="$PROJECT_NAME"
 DEFAULT_CONF="$HOME/Projects/dotfiles/tmux-sessions/default.conf"
 PROJECT_CONF="$HOME/Projects/dotfiles/tmux-sessions/${PROJECT_NAME}.conf"
 
+# Load configurations
 source "$DEFAULT_CONF"
 
 if [ ! -f "$PROJECT_CONF" ]; then
   if [ -d "$PROJECT_DIR" ]; then
-    mkdir -p "$HOME/.config/tmux-projects"
+    mkdir -p "$HOME/Projects/dotfiles/tmux-sessions"
 
     cat >"$PROJECT_CONF" <<EOF
 WINDOW_4_NAME="monitor"
@@ -56,7 +62,7 @@ EOF
   fi
 fi
 
-source "$DEFAULT_CONF"
+# Reload configurations in case PROJECT_CONF was just created or overrides defaults
 source "$PROJECT_CONF"
 
 tmux has-session -t "$SESSION" 2>/dev/null
